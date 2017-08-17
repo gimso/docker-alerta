@@ -63,6 +63,7 @@ do
 done
 
 # Configure housekeeping and heartbeat alerts
+echo  "* * * * * root /usr/bin/mongo $MONGO_ADDR /housekeepingAlerts.js >>/var/log/cron.log 2>&1" >> /etc/cron.d/alerta
 echo  "* * * * * root ALERTA_CONF_FILE=$ALERTA_CONF_FILE /usr/local/bin/alerta heartbeats --alert >>/var/log/cron.log 2>&1" >> /etc/cron.d/alerta
 
 exec "$@"
