@@ -1,5 +1,5 @@
 
-FROM ubuntu:latest
+FROM ubuntu:16.04
 MAINTAINER Nick Satterly <nick.satterly@theguardian.com>
 
 RUN apt-get update && apt-get install -y \
