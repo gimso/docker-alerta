@@ -37,10 +37,11 @@ ENV CLIENT_SECRET not-set
 RUN echo "from alerta.app import app" >/wsgi.py
 ADD uwsgi.ini /uwsgi.ini
 ADD nginx.conf /nginx.conf
+ADD housekeepingAlerts.js /housekeepingAlerts.js
 ADD supervisord.conf /etc/supervisord.conf
 
 EXPOSE 80
 
 COPY docker-entrypoint.sh /
-ENTRYPOINT ["/docker-entrypoint.sh"]
+ENTRYPOINT ["/docker-housekeeping-entrypoint.sh"]
 CMD ["supervisord", "-c", "/etc/supervisord.conf"]
