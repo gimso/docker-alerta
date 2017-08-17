@@ -29,6 +29,7 @@ SECRET_KEY = '$(< /dev/urandom tr -dc A-Za-z0-9_\!\@\#\$\%\^\&\*\(\)-+= | head -
 OAUTH2_CLIENT_ID = '$CLIENT_ID'
 OAUTH2_CLIENT_SECRET = '$CLIENT_SECRET'
 PLUGINS = $(python -c "print('${PLUGINS:-reject}'.split(','))")
+ALLOWED_ENVIRONMENTS=$(python -c "print('${ALLOWED_ENVIRONMENTS}'.split(','))")
 EOF
 else
   PLUGINS=$(python -c "exec(open('$ALERTA_SVR_CONF_FILE')); print(','.join(PLUGINS))")
